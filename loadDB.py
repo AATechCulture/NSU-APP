@@ -1,23 +1,12 @@
-from sqlalchemy.orm import Session
-from .import models, schemas
+
+from SqlLite.database import SessionLocal
+from SqlLite.schemas import MenuItemBase
+from SqlLite.crud import create_menu_item 
 
 
-def get_passenger(db: Session, passenger_id: int):
-    return db.query(models.Passenger).filter(models.Passenger.id == passenger_id).first()
 
 
-def get_passengers(db: Session):
-    return db.query(models.Passenger).all()
-
-
-def create_passenger(db: Session, passenger: schemas.PassengerBase):
-    db_passenger = models.Passenger(aaNumber = passenger.aaNumber, seatNumber = passenger.seatNumber, drinkPreference = passenger.drinkPreference, snackPreference = passenger.snackPreference, wakeUp = passenger.wakeUp)
-    db.add(db_passenger)
-    db.commit()
-    db.refresh(db_passenger)
-    return db_passenger
-
-'''def populate_database(db, menu_items):
+def populate_database(db, menu_items):
     menu_items = [
     {"id": 1, "name": "Biscoff cookies", "Type": "snack"},
     {"id": 2, "name": "Pretzels", "Type": "snack"},
@@ -45,16 +34,6 @@ def create_passenger(db: Session, passenger: schemas.PassengerBase):
 
     for menu_item in menu_items:
         create_menu_item(db, MenuItemBase(name=menu_item["name"], Type=menu_item["Type"]))
-'''
 
-def get_menu_items(db: Session, skip: int = 0, limit: int = 100):
-    return db.query(models.MenuItems).offset(skip).limit(limit).all()
-
-
-def create_menu_item(db: Session, menuItem: schemas.MenuItemBase):
-    db_menu_item = models.MenuItems(name = menuItem.name, type = menuItem.type )
-    db.add(db_menu_item)
-    db.commit()
-    db.refresh(db_menu_item)
-    return db_menu_item
+    
 
