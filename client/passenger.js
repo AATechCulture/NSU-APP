@@ -14,17 +14,17 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    const buttons = document.querySelectorAll('.choice-btn');
+    const radios = document.querySelectorAll('.choice-radio');
 
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove 'selected' class from all buttons
-            buttons.forEach(button => {
-                button.classList.remove('selected');
+    radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            // Remove 'selected' class from all labels
+            document.querySelectorAll('.choice-btn').forEach(label => {
+                label.classList.remove('selected');
             });
-
-            // Add 'selected' class to the clicked button
-            btn.classList.add('selected');
+            // Add 'selected' class to the label of the checked radio
+            const label = document.querySelector(`label[for="${radio.id}"]`);
+            label.classList.add('selected');
         });
     });
  
@@ -92,7 +92,7 @@ function getForm() {
     });
 
     // Assuming 'wakeupPreference' value is updated elsewhere in the code on button click
-    const wakeupPreference = document.querySelector('.choice-btn.selected').getAttribute('data-wakeup');
+    const wakeupPreference = document.querySelector('input[name="wakeupPreference"]:checked').value;
 
     // Get the selected seat
     const seat = `${randomRow}${randomSeatLetter}`;
@@ -126,4 +126,8 @@ function getForm() {
         console.error('Error:', error);
         alert("There was a problem submitting your preferences.");
     });
+}
+
+function routeToAA(){
+    window.open("https://www.aa.com/i18n/aadvantage-program/aadvantage-program.jsp", "_blank");
 }

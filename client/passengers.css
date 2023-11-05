@@ -82,12 +82,16 @@
     margin-top: 7%;
 }
 .choice-btn {
+    display: flex; /* This enables flexbox */
+    justify-content: center; /* This centers horizontally */
+    align-items: center; /* This centers vertically */
+    text-align: center;
     border: none;
     border-radius: 10%;
     background-color: #2E3A46; /* Default background color */
     width: 15%;
     height: 100px;
-    color: white;
+    color: rgb(246, 246, 246);
     font-size: large;
     cursor: pointer; /* Changes the cursor to a pointer to indicate it's clickable */
     transition: background-color 0.3s; /* Smooth transition for background color change */
