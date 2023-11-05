@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+# Schema for the passenger class
 class PassengerBase(BaseModel):
     seat: str
     drink: str

@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from .database import Base
 
+# model for the passenger class
 class Passenger(Base):
     __tablename__ = "passengers"
 
