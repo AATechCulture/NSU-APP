@@ -55,4 +55,9 @@ Techno-Spartanz
 ### Project Checklist due before 10a Sunday 11/5 🏁
 - [x] Presentation complete and linked
 - [x] Video pitch recorded and linked
+
+<<<<<<< Backend
 - [x] Code merged to main branch
+=======
+- [x] Code merged to main branch
+>>>>>>> main
