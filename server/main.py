@@ -25,15 +25,18 @@ def get_db():
     finally:
         db.close()
 
+# Route to create a passenger with set preferences
 @app.post("/passengers/", response_model=schemas.Passenger)
 def create_passenger(passenger: schemas.PassengerCreate, db: Session = Depends(get_db)):
     return crud.create_passenger(db=db, passenger=passenger)
 
+# Route to get all passengers
 @app.get("/passengers/", response_model=list[schemas.Passenger])
 def read_passengers(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     passengers = crud.get_passengers(db, skip=skip, limit=limit)
     return passengers
 
+# Route to get a passenger by their id
 @app.get("/passengers/{passenger_id}", response_model=schemas.Passenger)
 def read_passenger(passenger_id: int, db: Session = Depends(get_db)):
     passenger = crud.get_passenger(db, passenger_id=passenger_id)
